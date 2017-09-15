@@ -8,8 +8,16 @@ class App extends React.Component {
         {title: 'The Grey'},
         {title: 'Sunshine'},
         {title: 'Ex Machina'}
+      ],
+      originalList : [
+        {title: 'Mean Girls'},
+        {title: 'Hackers'},
+        {title: 'The Grey'},
+        {title: 'Sunshine'},
+        {title: 'Ex Machina'}
       ]
     }
+    this.changeMovieList = this.changeMovieList.bind(this);
   }
 
   changeMovieList(list) {
@@ -22,7 +30,11 @@ class App extends React.Component {
     return (
       <div className='app'>
       <h1>Movie List</h1>
-      <window.SearchBar list="this.state.movies" cb="this.changeMovieList"/>
+      <window.SearchBar
+        originalList={this.state.originalList}
+        list={this.state.movies}
+        cb={this.changeMovieList}
+      />
       <window.MovieList movies={this.state.movies} />
       </div>
     );
